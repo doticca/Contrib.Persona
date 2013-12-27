@@ -8,6 +8,8 @@ Installation
 
 Never test new modules in a production environment.
 
+To install this module using the Orchard gallery, visit https://gallery.orchardproject.net/List/Modules/Orchard.Module.Contrib.Persona/1.1.0
+
 After you enable the Contrib.Persona module, you have to ensure that one of your site Administrators has a valid e-mail.
 This module will not start servicing requests unless you go to Admin->Settings->Persona and Sign in with a valid Administrator user (there is a sign in button at Persona settings).
 This validation is mandatory since this module will overtake the default Orchard authentication mechanics to replace them with the very simple Persona sign in workflow.
