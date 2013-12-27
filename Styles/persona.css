@@ -1,0 +1,110 @@
+﻿/* PERSONA LOGIN BUTTON */
+.personasigninbutton{
+    float:right;
+}
+.personasigninbutton li, .personasigninbutton ul{
+    list-style: none;
+    float:right;
+    padding:0;
+    margin:0;
+}
+
+.personasigninbutton li:first-child{
+    border-left: 1px solid #dbdbdb;
+}
+
+.personasigninbutton li>a, .personasigninbutton li>p{
+    position: relative;
+    display: block;
+    padding:0 10px 0 10px;
+    margin:0;
+}
+
+a.persona-button {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    z-index: 2;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a.persona-button span {
+    text-decoration: none;
+    outline: none;
+    display: block;
+    float: left;
+    font-size: 14px;
+    line-height: 24px;
+    color: #fff;
+    font-weight: bold;
+    padding: 0 10px 0 20px;
+    position: relative;
+}
+
+a.persona-button span:first-of-type:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -12px;
+    width: 24px;
+    height: 24px;
+    z-index: 1;
+    -webkit-transform: scale(.707) rotate(45deg);
+    -moz-transform: scale(.707) rotate(45deg);
+    -ms-transform: scale(.707) rotate(45deg);
+    transform: scale(.707) rotate(45deg);
+    -webkit-border-radius: 0 3px 0 50px;
+    -moz-border-radius: 0 3px 0 50px;
+    -ms-border-radius: 0 3px 0 50px;
+    border-radius: 0 3px 0 50px;
+}
+
+a.persona-button span:last-of-type{
+    -webkit-border-radius: 0 3px 3px 0;
+    -moz-border-radius: 0 3px 3px 0;
+    -ms-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+}
+
+a.persona-button span.persona-icon {
+    padding-left: 3px;
+    -webkit-border-radius: 3px 0 0 3px;
+    -moz-border-radius: 3px 0 0 3px;
+    -ms-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+    background: -webkit-linear-gradient(#43a6e2,#287cc2);
+    background: -moz-linear-gradient(#43a6e2,#287cc2);
+    background: -ms-linear-gradient(#43a6e2,#287cc2);
+    background: linear-gradient(#43a6e2,#287cc2);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#43a6e2',endColorstr='#287cc2',GradientType=1);
+}
+
+a.persona-button span.persona-icon:after {
+    background: -webkit-linear-gradient(left top,#43a6e2,#287cc2);
+    background: -moz-linear-gradient(left top,#43a6e2,#287cc2);
+    background: -ms-linear-gradient(left top,#43a6e2,#287cc2);
+    background: linear-gradient(left top,#43a6e2,#287cc2);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#43a6e2',endColorstr='#287cc2',GradientType=1);
+}
+
+a.persona-button span.persona-icon img {
+    position: relative;
+    top: 2px;
+    left: 5px;
+    width: 14px;
+    height: 15px;
+}
+
+a.persona-button span.signin {
+    text-shadow: 0 1.5px 1px rgba(0,0,0,0.35);
+}
+
+a.persona-button span.signin, 
+a.persona-button span.signin:after {
+    background: -webkit-linear-gradient(#56565a,#3a3a3a);
+    background: -moz-linear-gradient(#56565a,#3a3a3a);
+    background: -ms-linear-gradient(#56565a,#3a3a3a);
+    background: linear-gradient(#56565a,#3a3a3a);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#56565a',endColorstr='#3a3a3a',GradientType=1);
+}

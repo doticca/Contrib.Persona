@@ -1,0 +1,29 @@
+﻿@using Orchard.ContentManagement
+@using Orchard.Mvc.Html;
+@{
+    Style.Require("Persona").AtHead();
+    Script.Require("Persona").AtHead();
+    Script.Require("OrchardPersona").AtFoot();
+}
+<div class="personasigninbutton">
+    @if (WorkContext.CurrentUser == null)
+    {
+
+        <a href="javascript:void(0);" class="persona-button persona-login" data-next="/">
+            <span class="persona-icon"><img src="~/modules/contrib.persona/styles/images/persona-person-white.png" alt=""></span>
+            <span class="signin">Sign in with Persona</span>
+        </a>
+
+    }
+    else
+    {
+        <ul>
+            <li>
+                <a href="@(Url.Action("LogOff", "Account", new RouteValueDictionary { { "Area", "Contrib.Persona" } }))" class="persona-logout">Sign Out</a>
+            </li>
+            <li>
+                <p class="navbar-text">@Html.ItemDisplayText(WorkContext.CurrentUser)</p>
+            </li>
+        </ul>
+    }
+</div>

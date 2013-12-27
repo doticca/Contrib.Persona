@@ -1,0 +1,10 @@
+﻿Name: Persona Sign In
+Path: Contrib.Persona
+AntiForgery: enabled
+Author: Fotis G. Pappas (fotisgpap)
+Website: https://github.com/grapto/Contrib.Persona
+Version: 1.1.0
+OrchardVersion: 1.7.2
+Description: Enable Mozilla Persona sign in for Orchard Authentication
+Category: Users
+Dependencies: Orchard.Users, Orchard.jQuery, Orchard.Roles

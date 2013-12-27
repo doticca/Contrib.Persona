@@ -1,0 +1,17 @@
+﻿@model dynamic
+<div class="personadenied">
+    <h1>@Html.TitleForPage(T("Not Found").ToString())</h1>
+    <p>@T("We're sorry, we couldn't find what you were looking for.")</p>
+    <p>You can start over on the <a href="~/">home page</a>.</p>
+    @if (WorkContext.CurrentUser == null)
+    {
+        <p>If you were following a link, you can sign in and retry.</p>
+        <div style="margin-bottom:60px;margin-top:20px;">
+            <a href="javascript:void(0);" class="persona-button persona-login" data-next="/">
+                <span class="persona-icon"><img src="https://developer.cdn.mozilla.net/media/redesign/img/persona-person-white.png" alt=""></span>
+                <span class="signin">Sign in with Persona</span>
+            </a>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,27 @@
+﻿@using Orchard.ContentManagement
+@using Orchard.Mvc.Html;
+@{
+    Style.Require("Persona").AtHead();
+    Script.Require("Persona").AtHead();
+    Script.Require("OrchardPersona").AtFoot();
+    var sitename = WorkContext.CurrentSite.SiteName;
+}
+
+<div class="personasigninform">
+    <h2></h2>
+    <h1>Sign In with Persona.</h1>
+    <h3>What's this?</h3>
+    <p>@sitename uses Persona. <a href="https://login.persona.org/about">Mozilla Persona</a> is a simple sign-in system from the non-profit behind Firefox</p>
+    <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your @sitename account (all your information is still here).</p>
+    <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new @sitename account.</p>     
+    <div style="margin-bottom:60px;margin-top:20px;">
+        <a href="javascript:void(0);" class="persona-button persona-login" data-next="/">
+            <span class="persona-icon"><img src="~/modules/contrib.persona/styles/images/persona-person-white.png" alt=""></span>
+            <span class="signin">Sign in with Persona</span>
+        </a>
+    </div>      
+</div>
+<script type="text/javascript">
+    var personaLogonUrl = '@(Url.Action("Persona", "Account", new RouteValueDictionary { { "Area", "Contrib.Persona" } }))';
+    var personaLogoffUrl = '@(Url.Action("LogOff", "Account", new RouteValueDictionary { { "Area", "Contrib.Persona" } }))';
+</script>
