@@ -27,15 +27,15 @@ At this initial version you can only change the Remember Authenticated Users set
 Administrator Validation
 ========================
 
-The module keeps checking the validated administrator on every action and if any of the following happens it falls back to standard Orchard Sign In:
-Validated Administrator no longer exists
-Validated Administrator email changes
-Module Settings no longer exist
-Validated Administrator is no longer an Administrator
+The module keeps checking the validated administrator on every action and if any of the following happens it falls back to standard Orchard Sign In:<br>
+Validated Administrator no longer exists<br>
+Validated Administrator email changes<br>
+Module Settings no longer exist<br>
+Validated Administrator is no longer an Administrator<br>
 
 Next version
 ============
 
-Javascript functions as a jQuery plugin to be able to pass settings like Sign In and Sign Out button classes
-New setting to be able to change the default Persona e-mail validator. By default it uses https://verifier.login.persona.org/verify
-More Persona Sign In button themes out of the box
+Javascript functions as a jQuery plugin to be able to pass settings like Sign In and Sign Out button classes<br>
+New setting to be able to change the default Persona e-mail validator. By default it uses https://verifier.login.persona.org/verify<br>
+More Persona Sign In button themes out of the box<br>
