@@ -132,7 +132,11 @@ namespace Contrib.Persona.Controllers
                     _authenticationService.SignIn(user, true);
                 }
                 _userEventHandler.LoggedIn(user);
-                string returnUrl = Url.Content(rUrl);
+                string returnUrl = string.Empty;
+                if (!string.IsNullOrWhiteSpace(rUrl))
+                {
+                    returnUrl = Url.Content(rUrl);
+                }
 
                 return Json(new { returnUrl });
             }          

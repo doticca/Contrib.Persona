@@ -21,7 +21,8 @@
             if (typeof (personaLogonUrl) !== 'undefined' && personaLogonUrl.length > 0)
                 url = personaLogonUrl;
             var returnurl = getUrlVar('ReturnUrl');
-            url = url + '?ReturnUrl=' + returnurl;
+            if(typeof(returnurl)!=='undefined' && returnurl.length>0)
+                url = url + '?ReturnUrl=' + returnurl;
             $.ajax({
                 type: 'POST',
                 url: url,

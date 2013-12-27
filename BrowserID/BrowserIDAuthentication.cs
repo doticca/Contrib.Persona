@@ -18,10 +18,10 @@ namespace Contrib.Persona.BrowserID
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BrowserIDAuthentication"/> class.
-        /// By default it uses <c>https://browserid.org/verify</c> as <see cref="IdentityAuthorityVerificationUrl"/>
+        /// By default it uses <c>https://verifier.login.persona.org/verify</c> as <see cref="IdentityAuthorityVerificationUrl"/>
         /// </summary>
         public BrowserIDAuthentication()
-            : this("https://browserid.org/verify")
+            : this("https://verifier.login.persona.org/verify")
         {
         }
 
