@@ -40,4 +40,4 @@ Javascript functions as a jQuery plugin to be able to pass settings like Sign In
 New setting to be able to change the default Persona e-mail validator. By default it uses https://verifier.login.persona.org/verify<br>
 More Persona Sign In button themes out of the box<br>
 
-Any questions or queries, please feel free to tweet me @fotisgpap, feel free to fork and improve.
+Any questions or queries, please feel free to tweet me @fotisgpap, fork and improve!
