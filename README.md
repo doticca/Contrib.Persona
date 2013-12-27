@@ -6,7 +6,7 @@ Enable Mozilla Persona sign in for Orchard authentication (https://login.persona
 Installation
 ============
 
-Never test new modules in a rpoduction environment.
+Never test new modules in a production environment.
 
 After you enable the Contrib.Persona module, you have to ensure that one of your site Administrators has a valid e-mail.
 This module will not start servicing requests unless you go to Admin->Settings->Persona and Sign in with a valid Administrator user (there is a sign in button at Persona settings).
@@ -39,3 +39,5 @@ Next version
 Javascript functions as a jQuery plugin to be able to pass settings like Sign In and Sign Out button classes<br>
 New setting to be able to change the default Persona e-mail validator. By default it uses https://verifier.login.persona.org/verify<br>
 More Persona Sign In button themes out of the box<br>
+
+Any questions or queries, please feel free to tweet me @fotisgpap, feel free to fork and improve.
