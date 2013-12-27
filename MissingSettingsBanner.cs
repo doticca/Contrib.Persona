@@ -53,7 +53,7 @@ namespace Contrib.Persona
                 else
                 {
                     var user = _orchardServices.ContentManager.Query<UserPart, UserPartRecord>().Where(u => u.NormalizedUserName == personaSettings.VerifiedSuperUser).List().FirstOrDefault();
-                    if (!_personaService.UserExists(personaSettings.VerifiedSuperUser))
+                    if (!_personaService.UserExists(personaSettings.VerifiedEmail))
                     {
                         yield return new NotifyEntry { Message = T("<a href=\"{0}\">Persona settings</a> needs to be configured. The verified user no longer exists.", url), Type = NotifyType.Warning };
                     }

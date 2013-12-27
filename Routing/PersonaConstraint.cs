@@ -39,7 +39,7 @@ namespace Contrib.Persona.Routing {
                 else
                 {
                     var user = _orchardServices.ContentManager.Query<UserPart, UserPartRecord>().Where(u => u.NormalizedUserName == personaSettings.VerifiedSuperUser).List().FirstOrDefault();
-                    if (!_personaService.UserExists(personaSettings.VerifiedSuperUser))
+                    if (!_personaService.UserExists(personaSettings.VerifiedEmail))
                     {
                         return false;
                     }
