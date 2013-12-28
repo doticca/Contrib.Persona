@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Contrib.persona by grapto</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Contrib.persona</h1>
+        <h2>Enable Mozilla Persona sign in for Orchard authentication</h2>
+        <a href="https://github.com/grapto/Contrib.Persona" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="contribpersona" class="anchor" href="#contribpersona"><span class="octicon octicon-link"></span></a>Contrib.Persona</h1>
+
+<p>Enable Mozilla Persona sign in for Orchard authentication (<a href="https://login.persona.org/">https://login.persona.org/</a>)</p>
+
+<h1>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<p>Never test new modules in a production environment.</p>
+
+<p>To install this module using the Orchard gallery, visit <a href="https://gallery.orchardproject.net/List/Modules/Orchard.Module.Contrib.Persona/1.1.0">https://gallery.orchardproject.net/List/Modules/Orchard.Module.Contrib.Persona/1.1.0</a></p>
+
+<p>After you enable the Contrib.Persona module, you have to ensure that one of your site Administrators has a valid e-mail.
+This module will not start servicing requests unless you go to Admin-&gt;Settings-&gt;Persona and Sign in with a valid Administrator user (there is a sign in button at Persona settings).
+This validation is mandatory since this module will overtake the default Orchard authentication mechanics to replace them with the very simple Persona sign in workflow.</p>
+
+<p>After you verify the administrator using Persona settings, you can start testing your new Persona sign in functions. The standard logon action will create a new view (PersonaLogon instead of LogOn) informing the visitors that your site is using Mozilla Persona Sign In with some information links to Mozilla site.
+Theme builders can override this view by copying the PersonaLogon.cshtml file from the module/views folder to their Theme views folder and changing it according their needs.</p>
+
+<p>This module comes also with a widget you can put on your site (e.g. Navigation Zone, after your menu) to have a Persona Sign In button at the right side of your menu. If the user logins, the Widget changes to a logout button).
+Theme builders can override the widget by copying the Parts.Persona.SignIn.cshtml view to their theme views folder.
+Check persona.css to change positioning and colors according to your theme needs.</p>
+
+<h1>
+<a name="persona-settings" class="anchor" href="#persona-settings"><span class="octicon octicon-link"></span></a>Persona settings</h1>
+
+<p>At this initial version you can only change the Remember Authenticated Users setting to have your site keep cookies of the authenticated users right after their sign in.</p>
+
+<p>You should also set Admin-&gt;Settinggs-&gt;Users setting 'Users can create new accounts on this site' to true if you want to automatically create new users when they sign in with Persona</p>
+
+<h1>
+<a name="administrator-validation" class="anchor" href="#administrator-validation"><span class="octicon octicon-link"></span></a>Administrator Validation</h1>
+
+<p>The module keeps checking the validated administrator on every action and if any of the following happens it falls back to standard Orchard Sign In:<br>
+Validated Administrator no longer exists<br>
+Validated Administrator email changes<br>
+Module Settings no longer exist<br>
+Validated Administrator is no longer an Administrator<br></p>
+
+<h1>
+<a name="next-version" class="anchor" href="#next-version"><span class="octicon octicon-link"></span></a>Next version</h1>
+
+<p>Javascript functions as a jQuery plugin to be able to pass settings like Sign In and Sign Out button classes<br>
+New setting to be able to change the default Persona e-mail validator. By default it uses <a href="https://verifier.login.persona.org/verify">https://verifier.login.persona.org/verify</a><br>
+More Persona Sign In button themes out of the box<br></p>
+
+<p>Any questions or queries, please feel free to tweet me <a href="https://github.com/fotisgpap" class="user-mention">@fotisgpap</a>, fork and improve!</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/grapto/Contrib.Persona/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/grapto/Contrib.Persona/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/grapto/Contrib.Persona"></a> is maintained by <a href="https://github.com/grapto">grapto</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
