@@ -32,15 +32,15 @@ namespace Contrib.Persona.Drivers
 
         protected override string Prefix { get { return "PersonaSettings"; } }
 
-        protected override DriverResult Editor(PersonaSettingsPart part, dynamic shapeHelper)
+        private PersonaSettingsViewModel createViewModel(PersonaSettingsPart part)
         {
             string verifiedUserEmail = string.Empty;
 
             if (!string.IsNullOrWhiteSpace(part.VerifiedSuperUser))
             {
-                    var user = _orchardServices.ContentManager.Query<UserPart, UserPartRecord>().Where(u => u.NormalizedUserName == part.VerifiedSuperUser).List().FirstOrDefault();
-                    if (user != null) 
-                        verifiedUserEmail = user.Email;
+                var user = _orchardServices.ContentManager.Query<UserPart, UserPartRecord>().Where(u => u.NormalizedUserName == part.VerifiedSuperUser).List().FirstOrDefault();
+                if (user != null)
+                    verifiedUserEmail = user.Email;
             }
             var viewModel = new PersonaSettingsViewModel
             {
@@ -49,27 +49,36 @@ namespace Contrib.Persona.Drivers
                 RememberUser = part.RememberUser,
                 VerifiedSuperUserEmail = verifiedUserEmail,
                 VerifiedEmail = part.VerifiedEmail,
-                isUserAdmin = !string.IsNullOrWhiteSpace(_personaService.IsUserAdmin(part.VerifiedEmail))
+                isUserAdmin = !string.IsNullOrWhiteSpace(_personaService.IsUserAdmin(part.VerifiedEmail)),
+                VerifiedSuperUser = part.VerifiedSuperUser
             };
+            return viewModel;
+        }
+        protected override DriverResult Editor(PersonaSettingsPart part, dynamic shapeHelper)
+        {
             return ContentShape("Parts_PersonaSettings_Edit",
-                    () => shapeHelper.EditorTemplate(TemplateName: TemplateName, Model: viewModel, Prefix: Prefix))
+                    () => shapeHelper.EditorTemplate(TemplateName: TemplateName, Model: createViewModel(part), Prefix: Prefix))
                     .OnGroup("Persona"); 
         }
 
         protected override DriverResult Editor(PersonaSettingsPart part, IUpdateModel updater, dynamic shapeHelper)
-        {
-            var viewModel = new PersonaSettingsViewModel();
-            if (updater.TryUpdateModel(viewModel, Prefix, null, null))
-            {
-                part.ClassLogin = viewModel.ClassLogin;
-                part.ClassLogout = viewModel.ClassLogout;
-                part.RememberUser = viewModel.RememberUser;
-                part.VerifiedEmail = viewModel.VerifiedEmail;
-                part.VerifiedSuperUser = viewModel.VerifiedSuperUser;
-            }
-            return ContentShape("Parts_PersonaSettings_Edit",
-                    () => shapeHelper.EditorTemplate(TemplateName: TemplateName, Model: viewModel, Prefix: Prefix))
-                    .OnGroup("Persona"); 
+        {           
+            return ContentShape("Parts_PersonaSettings_Edit", () => {
+                var viewModel = createViewModel(part);
+                if (updater != null)
+                {
+                    if (updater.TryUpdateModel(viewModel, Prefix, null, null))
+                    {
+                        part.ClassLogin = viewModel.ClassLogin;
+                        part.ClassLogout = viewModel.ClassLogout;
+                        part.RememberUser = viewModel.RememberUser;
+                        part.VerifiedEmail = viewModel.VerifiedEmail;
+                        part.VerifiedSuperUser = viewModel.VerifiedSuperUser;
+                    }
+                }
+                return shapeHelper.EditorTemplate(TemplateName: TemplateName, Model: viewModel, Prefix: Prefix);
+            })
+            .OnGroup("Persona"); 
         }
 
         protected override void Exporting(PersonaSettingsPart part, ExportContentContext context)

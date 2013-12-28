@@ -1,15 +1,14 @@
 ﻿using Contrib.Persona.Models;
+using JetBrains.Annotations;
 using Orchard.ContentManagement;
 using Orchard.ContentManagement.Handlers;
 using Orchard.Data;
 using Orchard.Localization;
 
-namespace Contrib.Persona.Handlers
-{
-    public class PersonaSettingsPartHandler : ContentHandler
-    {
-        public PersonaSettingsPartHandler(IRepository<PersonaSettingsPartRecord> repository)
-        {
+namespace Contrib.Persona.Handlers{
+    [UsedImplicitly]
+    public class PersonaSettingsPartHandler : ContentHandler{
+        public PersonaSettingsPartHandler(IRepository<PersonaSettingsPartRecord> repository){
             T = NullLocalizer.Instance;
             Filters.Add(new ActivatingFilter<PersonaSettingsPart>("Site"));
             Filters.Add(StorageFilter.For(repository));
