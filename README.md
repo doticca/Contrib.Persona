@@ -25,6 +25,7 @@ Persona settings
 ================
 
 At this initial version you can only change the Remember Authenticated Users setting to have your site keep cookies of the authenticated users right after their sign in.
+
 You should also set Admin->Settinggs->Users setting 'Users can create new accounts on this site' to true if you want to automatically create new users when they sign in with Persona
 
 Administrator Validation
