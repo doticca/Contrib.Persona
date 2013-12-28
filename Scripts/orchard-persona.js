@@ -36,7 +36,7 @@
                     }
                 },
                 error: function (res, status, xhr) {
-                    alert("login failure" + res);
+                    window.location.reload();
                 }
             });
         }

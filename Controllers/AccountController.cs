@@ -112,8 +112,12 @@ namespace Contrib.Persona.Controllers
                 var user = _orchardServices.ContentManager.Query<UserPart, UserPartRecord>().Where(u => u.Email == lowerEmail).List().FirstOrDefault();
                 if (user == null)
                 {
-                    user = _membershipService.CreateUser(new CreateUserParams(lowerEmail, Guid.NewGuid().ToString(), lowerEmail, null, null, true)) as UserPart;
-                    if (user == null)
+                    var registrationSettings = _orchardServices.WorkContext.CurrentSite.As<RegistrationSettingsPart>();
+                    if (registrationSettings.UsersCanRegister)
+                    {
+                        user = _membershipService.CreateUser(new CreateUserParams(lowerEmail, Guid.NewGuid().ToString(), lowerEmail, null, null, true)) as UserPart;
+                    }
+                    if (user == null)                    
                     {
                         return Json(null);
                     }
