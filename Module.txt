@@ -3,7 +3,7 @@ Path: Contrib.Persona
 AntiForgery: enabled
 Author: Fotis G. Pappas (fotisgpap)
 Website: https://github.com/grapto/Contrib.Persona
-Version: 1.1.1
+Version: 1.1.1.1
 OrchardVersion: 1.7.2
 Description: Enable Mozilla Persona sign in for Orchard Authentication
 Category: Users

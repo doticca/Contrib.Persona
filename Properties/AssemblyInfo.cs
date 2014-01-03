@@ -14,6 +14,6 @@ using System.Security;
 
 [assembly: Guid("EE045906-EEDC-4572-9274-B3073F0FA7B5")]
 
-[assembly: AssemblyVersion("1.4.0.0")]
-[assembly: AssemblyFileVersion("1.4.0.0")]
+[assembly: AssemblyVersion("1.1.1.1")]
+[assembly: AssemblyFileVersion("1.1.1.1")]
 [assembly: AssemblyCompanyAttribute("Grapto Ltd.")]
