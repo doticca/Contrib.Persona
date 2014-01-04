@@ -14,10 +14,10 @@ After you enable the Contrib.Persona module, you have to ensure that one of your
 This module will not start servicing requests unless you go to Admin->Settings->Persona and Sign in with a valid Administrator user (there is a sign in button at Persona settings).
 This validation is mandatory since this module will overtake the default Orchard authentication mechanics to replace them with the very simple Persona sign in workflow.
 
-After you verify the administrator using Persona settings, you can start testing your new Persona sign in functions. The standard logon action will create a new view (PersonaLogon instead of LogOn) informing the visitors that your site is using Mozilla Persona Sign In with some information links to Mozilla site.
+After you verify the administrator using Persona settings, you can start testing your new Persona sign in functions. The standard logon action will create a new view (PersonaLogon instead of LogOn) informing the visitors that your site is using Mozilla Persona Sign In with some informational links to Mozilla site.
 Theme builders can override this view by copying the PersonaLogon.cshtml file from the module/views folder to their Theme views folder and changing it according their needs.
 
-This module comes also with a widget you can put on your site (e.g. Navigation Zone, after your menu) to have a Persona Sign In button at the right side of your menu. If the user logins, the Widget changes to a logout button).
+This module also comes with a widget you can put on your site (e.g. Navigation Zone, after your menu) to have a Persona Sign In button at the right side of your menu. If the user logins, the Widget changes to a logout button).
 Theme builders can override the widget by copying the Parts.Persona.SignIn.cshtml view to their theme views folder.
 Check persona.css to change positioning and colors according to your theme needs.
 
