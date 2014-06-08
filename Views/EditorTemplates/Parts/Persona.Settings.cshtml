@@ -1,0 +1,95 @@
+@model Contrib.Persona.ViewModels.PersonaSettingsViewModel
+<fieldset>
+    <legend>@T("Persona Settings")</legend>
+    <div>
+        @Html.EditorFor(m => m.RememberUser)
+        <label for="@Html.FieldIdFor(m => m.RememberUser)" class="forcheckbox">@T("Remember Authenticated Users")</label>
+        <span class="hint">@T("A Global Remember Me switch.")</span>
+        @Html.ValidationMessage("RememberUser", "*")
+    </div>    
+    <div>
+        @Html.LabelFor(m => m.ClassLogin, T("Class Login"))
+        @Html.TextBoxFor(m => m.ClassLogin, new { @class = "textMedium" })
+        <span class="hint">@T("Enter the selector for your login button e.g. .persona-login")</span>
+    </div>  
+    <div>
+        @Html.LabelFor(m => m.ClassLogout, T("Class Logout"))
+        @Html.TextBoxFor(m => m.ClassLogout, new { @class = "textMedium" })
+        <span class="hint">@T("Enter the selector for your logout button e.g. .persona-logout")</span>
+    </div> 
+</fieldset>
+<fieldset id="personaverify">
+    @if (string.IsNullOrWhiteSpace(Model.VerifiedEmail) || Model.VerifiedEmail != Model.VerifiedSuperUserEmail || !Model.isUserAdmin)
+    {
+        if (!Model.isUserAdmin)
+        {
+            <p>@Model.VerifiedEmail @T("is not an administrator any more. Please register a new administrator.")</p>
+        }
+        Style.Require("Persona").AtHead();
+        Script.Require("Persona").AtHead();
+
+        <legend>@T("Verify Super user Email")</legend>
+        <span class="hint">@T("Persona will override default Orchard login system.")</span>
+        <div style="margin-bottom:60px;margin-top:20px;">
+            <a href="javascript:void(0);" class="persona-button persona-login" data-next="/">
+                <span class="persona-icon"><img src="~/modules/contrib.persona/styles/images/persona-person-white.png" alt=""></span>
+                <span class="signin">Sign in with Persona</span>
+            </a>
+        </div>
+        <span class="hint">@T("To avoid lockout and continue with Persona, you have to verify an administrator.")</span>
+    }
+    else
+    {
+        <legend>@T("You verified ")@Model.VerifiedEmail</legend>
+    }
+    @Html.Hidden("VerifiedEmail", (string)Model.VerifiedEmail)
+    @Html.Hidden("VerifiedSuperUser", (string)Model.VerifiedSuperUser)
+</fieldset>
+<div id="lastconfirm">
+    <legend>@T("Thank you for verifying an administrator!")</legend>
+    <span class="hint">@T("After you save these setings Persona will be used to login in this site.")</span>
+</div>
+@using (Script.Foot())
+{
+<script type="text/javascript">
+    //<![CDATA[
+    (function ($) {
+        $('#lastconfirm').hide();
+        var formEmail = $("#PersonaSettings_VerifiedEmail");
+        var formUser = $("#PersonaSettings_VerifiedSuperUser");
+        var jsonUrl = "@Url.Action("PersonaVerifyAdminEmail", "Admin", new RouteValueDictionary { { "Area", "Contrib.Persona" } })";
+
+        function gotVerifiedEmail(assertion) {
+            if (assertion !== null) {                
+                
+                $.ajax({
+                    type: 'POST',
+                    url: jsonUrl,
+                    data: {
+                        assertion: assertion,
+                        __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val()
+                    },
+                    success: function (res, status, xhr) {
+                        if (typeof (res.error) !== 'undefined' && res.error.length > 0) {
+                            alert(res.error);
+                        }
+                        else {
+                            formEmail.val(res.email);
+                            formUser.val(res.user);
+                            $("#personaverify").hide();
+                            $('#lastconfirm').show();
+                        }                         
+                    },
+                    error: function (res, status, xhr) {
+                        alert("could not verify that email");
+                    }
+                });
+            }
+        }
+        $('.persona-login').bind('click', function () {
+            navigator.id.get(gotVerifiedEmail);
+        });
+    })(window.jQuery);
+    //]]>
+</script>
+}
